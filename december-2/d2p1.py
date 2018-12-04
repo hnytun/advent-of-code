@@ -28,8 +28,6 @@ def makeListFromInput(inputFile):
         inList.append(line.rstrip())
     return inList
 
-
-
 """
 PART 2
 """
@@ -51,7 +49,6 @@ def findNumDiff(s1,s2):
         count+=1
     return indices
 
-
 """
 Function to find one of the correct boxes by finding other boxes with an ID that differs in 1 character.
 To find the common letters we then remove the differenting character
@@ -66,6 +63,4 @@ def findCommonLetters(inputFile):
                 return ID[:index] + ID[index+1:]
 
 print("checksum: " + str(getChecksum("input.txt")))
-
-
 print("common ID of correct boxes: " + str(findCommonLetters("input.txt")))
