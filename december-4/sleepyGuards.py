@@ -1,5 +1,6 @@
 
 from collections import Counter
+from timeit import default_timer as timer
 
 """
 Input handling, take in and sort
@@ -100,6 +101,7 @@ def getTime(line):
     return int(line.split(" ")[1][:5].split(":")[1])
 
 
+start = timer()
 eventList = getInput("input.txt")
 factory = Factory()
 currentID = None
@@ -120,12 +122,12 @@ for line in eventList:
         time = getTime(line)
         factory.getGuard(currentID).wakeUp(time)
 
-
 #PART 1
 print("---------PART 1----------")
-mostFreqMinute = factory.getGuard(factory.mostSleep()).mostFrequentMinute()[0][0]
-amount = factory.getGuard(factory.mostSleep()).mostFrequentMinute()
-print(factory.mostSleep(),"slept the most minutes, and most on minute", mostFreqMinute)
+mostSleepyGuard = factory.getGuard(factory.mostSleep())
+mostFreqMinute = mostSleepyGuard.mostFrequentMinute()[0][0]
+amount = mostSleepyGuard.fetchSleep()
+print("Guard", factory.mostSleep(),"slept the most, with a total of", amount, "minutes, and spends most time asleep on 00:" + str(mostFreqMinute))
 print("-------------------------")
 
 #PART 2
@@ -142,5 +144,7 @@ for guard in factory.getGuards():
         mostSleepOnSameMinute = (fellAsleepOn,amount)
         mostSleepyGuard = guard
 print("--------PART 2----------")
-print(mostSleepyGuard,"slept on",mostSleepOnSameMinute[0], mostSleepOnSameMinute[1], "times")
+print("Guard",mostSleepyGuard,"slept on",mostSleepOnSameMinute[0], mostSleepOnSameMinute[1], "times")
 print("------------------------")
+end = timer()
+print("computation time:",end-start)
