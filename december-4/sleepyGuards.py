@@ -137,11 +137,11 @@ for guard in factory.getGuards():
     mostFreq = factory.getGuard(guard).mostFrequentMinute()
     if mostFreq == []:
         continue
-    fellAsleepOn = mostFreq[0][0]
+    sleepsOn = mostFreq[0][0]
     amount = mostFreq[0][1]
 
     if amount > mostSleepOnSameMinute[1]:
-        mostSleepOnSameMinute = (fellAsleepOn,amount)
+        mostSleepOnSameMinute = (sleepsOn,amount)
         mostSleepyGuard = guard
 print("--------PART 2----------")
 print("Guard",mostSleepyGuard,"slept on",mostSleepOnSameMinute[0], mostSleepOnSameMinute[1], "times")
